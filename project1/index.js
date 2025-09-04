@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
   if (requestedPage === "") {
     requestedPage = "index.html"; // página por default
   }
-
+  
   if (pages.includes(requestedPage)) {
     const filePath = path.join(__dirname, requestedPage);
     fs.readFile(filePath, (err, data) => {

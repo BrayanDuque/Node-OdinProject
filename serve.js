@@ -17,3 +17,5 @@ const server = createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+// Para crear o utilizar variables de desarrollo, creamos en el archivo raiz un .env donde se encontraran todas las variables de entorno, agregamos .env al .gitignore para evitar de que se publiquen y si queremos utilizarlas lo que hacemos es llamar al alchivo require("dotenv").config(); para editar la variable, solo basta con hacerlos desde .env
