@@ -34,6 +34,18 @@ app.get("/search", (req, res) => {
    }
 })
 
+//muddelware basico de autenticación
+app.use((req, res, next) => {
+    console.log("Middleware ejecutado");
+    if(req.query.login == "bradu"){
+        res.send("Has iniciado sesión");
+        next();
+    }else{
+        res.send("No has iniciado sesión");
+    }
+    
+});
+
 //Iniciar el servidor en el puerto 3000
 app.listen(3000, () => {
     console.log("Servidor escuchando en el puerto 3000");
