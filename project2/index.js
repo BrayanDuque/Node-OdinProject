@@ -34,7 +34,7 @@ app.get("/search", (req, res) => {
    }
 })
 
-//muddelware basico de autenticación
+//muddelware basico de autenticación (recordar que hay middelwares ya creadps, que podemos consultar en la documentación de express o con la IA)
 app.use((req, res, next) => {
     console.log("Middleware ejecutado");
     if(req.query.login == "bradu"){
