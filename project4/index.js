@@ -4,6 +4,7 @@ const path = require("path");
 const express = require("express");
 const forumRouter = require("./routers/forum");
 
+
 //Creación de la aplicación express
 const app = express();
 
