@@ -8,10 +8,11 @@ const morgan = require("morgan");
 app.use(morgan("dev"));
 app.use(express.json());
 let productos = [];
-
+//ruta para mostrar los productos
 app.get("/products", (req, res) => {
   res.json(productos);
 });
+//ruta para crear un nuevo producto
 app.post("/products", (req, res) => {
   // Crear un nuevo producto con un ID único
   const newProduct = { ...req.body, id: productos.length + 1 };
@@ -20,7 +21,9 @@ app.post("/products", (req, res) => {
   // Devolver el nuevo producto como respuesta json
   res.json(newProduct);
 });
+//ruta para actualizar un producto existente
 app.put("/products/:id", (req, res) => {
+  // Obtener el ID del producto desde los parámetros de la URL
     const { id } = req.params;
     // Buscar el producto en el array por su ID, convirtiendo el ID a número
     const product = productos.find((p) => p.id === parseInt(id));
@@ -35,6 +38,7 @@ app.put("/products/:id", (req, res) => {
     res.json({ message: "Producto actualizado" });
 
 });
+//ruta para eliminar un producto existente
 app.delete("/products/:id", (req, res) => {
    const { id } = req.params;
    // Buscar el producto en el array por su ID, convirtiendo el ID a número
@@ -45,10 +49,13 @@ app.delete("/products/:id", (req, res) => {
    } else {
      res.status(404).json({ message: "Producto no encontrado" });
    }
-  
+  // Eliminar el producto del array
    productos = productos.filter((p) => p.id !== parseInt(id));
+   // Devolver una respuesta con el estado 204 (No Content)
    res.status(204).send();
 });
+
+//ruta para obtener un producto por su ID
 app.get("/products/:id", (req, res) => {
   // Obtener el ID del producto desde los parámetros de la URL
   const { id } = req.params;
